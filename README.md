@@ -11,7 +11,7 @@ Analizar y transformar un conjunto de datos previamente tratado (`datos_tratados
 - Realizar un análisis exploratorio de datos (EDA).
 - Identificar patrones o tendencias relevantes.
 - Preparar el dataset para modelos de predicción enfocados en *churn* (abandono de clientes).
-- Generar recomendaciones basadas en estudio y resultados arrojados por el modelo predictivo
+- Generar recomendaciones basadas en el estudio y los resultados arrojados por el modelo predictivo
 
 ---
 
