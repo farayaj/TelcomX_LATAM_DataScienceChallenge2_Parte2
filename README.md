@@ -11,6 +11,7 @@ Analizar y transformar un conjunto de datos previamente tratado (`datos_tratados
 - Realizar un análisis exploratorio de datos (EDA).
 - Identificar patrones o tendencias relevantes.
 - Preparar el dataset para modelos de predicción enfocados en *churn* (abandono de clientes).
+- Generar recomendaciones basadas en estudio y resultados arrojados por el modelo predictivo
 
 ---
 
@@ -53,12 +54,20 @@ Los análisis realizados y los hallazgos clave incluyen:
 
 5.   **Método de Pago:** El método de pago también influye, con el pago electrónico mostrando una asociación con una mayor probabilidad de abandono en algunos modelos.(Árbol de Decisión y KNN)
 
-6. **Modelado Predictivo del Abandono:** Para abordar el desbalance de clases, se aplicó la técnica SMOTE al conjunto de entrenamiento. Se dividió el conjunto de datos en conjuntos de entrenamiento y prueba manteniendo la proporción de la clase objetivo.
+---
+
+## 💻Procesamiento y elección del modelo predictivo
+
+- **Modelado predictivo del abandono:** Para abordar el desbalance de clases, se aplicó la técnica SMOTE al conjunto de entrenamiento. Se dividió el conjunto de datos en conjuntos de entrenamiento y prueba manteniendo la proporción de la clase objetivo.
 Se evaluaron tres modelos de clasificación: Regresión Logística, K-Nearest Neighbors (KNN) y Árbol de Decisión. Se construyeron pipelines que incluyeron pasos de escalado (StandardScaler para LR, MinMaxScaler para KNN) y el clasificador. Se realizó sintonización de hiperparámetros utilizando GridSearchCV con F1-score como métrica principal en validación cruzada para optimizar el rendimiento, especialmente en la clase minoritaria. También se exploró el impacto de ajustar el umbral de decisión, el cual afecto positivamente las métricas del modelo KNN.
 
 - **Modelo recomendado:** Se seleccionó la **Regresión Logística sintonizada** como el modelo recomendado por su balance de métricas, capacidad para identificar churn (**Recall**) e interpretabilidad de coeficientes.
+  
+- **Conclusión:** El análisis identificó los impulsores clave del abandono (antigüedad, contrato, servicios, cargos, pago). El modelo de Regresión Logística sintonizada es una herramienta predictiva útil. Se recomienda implementar estrategias de retención dirigidas y monitorear continuamente.
 
-- **Estrategias de retención propuestas:** 
+---
+
+## 💡Estrategias de retención propuestas:
 Basándonos en los factores clave de abandono identificados y el modelo predictivo seleccionado, se proponen las siguientes estrategias de retención:
 
 1.  **Enfoque en clientes nuevos:** Implementar programas de bienvenida y "onboarding" proactivos durante los primeros 6-12 meses para asegurar la satisfacción del cliente, resolver dudas y ofrecer soporte adicional. Considerar incentivos para compromisos a más largo plazo al inicio.
@@ -73,9 +82,6 @@ Basándonos en los factores clave de abandono identificados y el modelo predicti
 
 6.  **Campañas de retención dirigidas:** Utilizar el modelo de Regresión Logística sintonizada para identificar a los clientes con alta probabilidad de abandono. Diseñar campañas de retención personalizadas basadas en los factores de riesgo específicos de cada cliente.
 
-
-- **Conclusión (del Informe):** El análisis identificó los impulsores clave del abandono (antigüedad, contrato, servicios, cargos, pago). El modelo de Regresión Logística sintonizada es una herramienta predictiva útil. Se recomienda implementar estrategias de retención dirigidas y monitorear continuamente.
-
 ---
 
 ## ⚙️ Dependencias
@@ -85,6 +91,7 @@ Las dependencias principales utilizadas en este proyecto son:
 - pandas
 - numpy
 - scikit-learn
+- imbalanced-learn
 - matplotlib
 - seaborn
 - joblib
@@ -96,7 +103,7 @@ Las dependencias principales utilizadas en este proyecto son:
 Para ejecutar este proyecto, sigue estos pasos:
 
 1. Clona este repositorio.
-2. Asegúrate de tener Python y las dependencias instaladas (`pip install -r requirements.txt`).
+2. Asegúrate de tener Python y las dependencias instaladas.
 3. Descarga el archivo de datos `datos_tratados_parte1.csv` y colócalo en la ubicación esperada (`/content/datos_tratados_parte1.csv` o actualiza la ruta en el código).
 4. Ejecuta el notebook `Challenge_TelcomX_parte2_Latam.ipynb` en un entorno como Google Colab o Jupyter Notebook para reproducir el análisis y el modelado.
 
